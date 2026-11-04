@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una invitación especial</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <main class="escena">
+        <p class="etiqueta">Hola Señorita Bonita</p>
+        <h1>¿Te gustan las sorpresas?</h1>
+        <p class="intro"> Toca la ventanita</p>
+
+        <section class="ventana" aria-label="Ventana con una paloma mensajera">
+            <div class="cielo">
+                <span class="sol"></span>
+                <span class="nube"></span>
+            </div>
+
+            <div class="marco" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+            </div>
+
+            <button class="contraventana" id="contraventana" aria-label="Abrir ventana">
+                <span class="texto-ventana">Toca para abrir</span>
+                <span class="pestillo"></span>
+            </button>
+
+            <div class="paloma" id="paloma">
+                <span class="emoji-paloma">🕊️</span>
+                <button class="pata" id="pata">🐾 Toca mi patita</button>
+            </div>
+        </section>
+
+        <p class="ayuda" id="ayuda">Presiona la ventana para descubrir la sorpresa</p>
+
+        <article class="carta" id="carta">
+            <p class="etiqueta">UNA INVITACIÓN</p>
+            <h2>¿Salimos?</h2>
+            <p>
+                Tenemos pendiente una salida y ya que dijiste que 
+                querias que sea con mas esfuerzo pues aqui esta.
+                ¿Aceptas la salida a
+                <strong id="lugarTexto">un lugar bonito</strong>?
+            </p>
+            <p>Elige el día y la hora que te queden mejor:</p>
+
+            <div class="campos">
+                <label>
+                    Fecha
+                    <input type="date" id="fecha">
+                </label>
+                <label>
+                    Hora
+                    <input type="time" id="hora">
+                </label>
+            </div>
+
+            <div class="botones">
+                <button class="aceptar" id="aceptar">Sí, acepto 💌</button>
+                <button class="rechazar" id="rechazar">Esta vez no 🌷</button>
+            </div>
+
+            <p class="estado" id="estado" aria-live="polite"></p>
+            <p class="nota">WhatsApp abrirá con la respuesta lista. Solo falta tocar Enviar.</p>
+            <p class="firma">Con cariño ✨</p>
+        </article>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+:root {
+    --tinta: #352d3b;
+    --rosa: #f55c82;
+    --crema: #fffaf3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px 16px;
+    display: grid;
+    place-items: center;
+    color: var(--tinta);
+    background: radial-gradient(ellipse at top, #fff, #f7eced 48%, #e8dfe9);
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.escena {
+    width: min(100%, 620px);
+    text-align: center;
+}
+
+.etiqueta {
+    color: #eb719b;
+    font: 600 11px/1.5 system-ui, sans-serif;
+    letter-spacing: 0.22em;
+}
+
+h1 {
+    margin: 8px 0;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    font-weight: 400;
+}
+
+.intro {
+    margin: 0 auto 26px;
+    color: #766d78;
+    font: 15px/1.6 system-ui, sans-serif;
+}
+
+.ventana {
+    position: relative;
+    height: 330px;
+    overflow: hidden;
+    border: 10px solid #fff9f2;
+    border-radius: 18px;
+    background: linear-gradient(#c5dbe5, #eff0e7 72%, #d7d3cb);
+    box-shadow: 0 24px 60px #62495625, inset 0 0 0 2px #d6c6bd;
+    perspective: 1000px;
+}
+
+.cielo {
+    position: absolute;
+    inset: 0;
+}
+
+.sol {
+    position: absolute;
+    top: 15%;
+    right: 17%;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #ffe7b2;
+    box-shadow: 0 0 45px #ffe7b2aa;
+}
+
+.nube {
+    position: absolute;
+    top: 23%;
+    left: 9%;
+    width: 120px;
+    height: 35px;
+    border-radius: 50%;
+    background: #ffffffa8;
+}
+
+.nube::after {
+    position: absolute;
+    top: -18px;
+    left: 30px;
+    width: 55px;
+    height: 48px;
+    border-radius: 50%;
+    background: #ffffffb8;
+    content: "";
+}
+
+.marco {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    gap: 8px;
+    padding: 8px;
+    background: #f9f2e9aa;
+}
+
+.marco span {
+    border: 5px solid #fff9f2;
+    box-shadow: 0 0 0 2px #a18e8277;
+}
+
+.contraventana {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border: 7px solid #f8eee4;
+    background: linear-gradient(110deg, #b78372, #d6a58c 52%, #b77f70);
+    box-shadow: inset 0 0 0 3px #ffffff5c, inset -12px 0 28px #67413b44;
+    cursor: pointer;
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contraventana::before {
+    position: absolute;
+    inset: 15px;
+    border: 1px solid #fff8;
+    content: "";
+}
+
+.contraventana.abierta {
+    transform: rotateY(-105deg);
+}
+
+.texto-ventana {
+    color: #fffaf2;
+    font-size: 1.5rem;
+    text-shadow: 0 2px 8px #704b4b88;
+}
+
+.pestillo {
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #d7ad68;
+}
+
+.paloma {
+    position: absolute;
+    z-index: 3;
+    top: 45%;
+    left: 50%;
+    display: grid;
+    justify-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.7s, left 0.7s, top 0.7s;
+}
+
+.paloma.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.paloma.volando {
+    top: 25%;
+    left: 82%;
+    transform: translate(-50%, -50%) rotate(12deg) scale(0.75);
+}
+
+.emoji-paloma {
+    font-size: 76px;
+    filter: drop-shadow(0 9px 8px #5a53604b);
+    animation: flotar 2.5s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    50% { transform: translateY(-8px); }
+}
+
+.pata {
+    margin-top: 5px;
+    padding: 10px 16px;
+    border: 1px solid #d9b7be;
+    border-radius: 999px;
+    color: #8e5364;
+    background: #fff7f6;
+    font: 600 13px system-ui, sans-serif;
+    cursor: pointer;
+}
+
+.ayuda {
+    min-height: 20px;
+    margin: 14px 0 28px;
+    color: #847783;
+    font: 13px system-ui, sans-serif;
+}
+
+.carta {
+    display: none;
+    margin: -10px auto 0;
+    padding: clamp(22px, 6vw, 38px);
+    border: 1px solid #e8d8c9;
+    border-radius: 4px;
+    background: var(--crema);
+    box-shadow: 0 18px 45px #5a41521f;
+    text-align: left;
+}
+
+.carta.visible {
+    display: block;
+    animation: aparecer 0.6s ease both;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.carta h2 {
+    margin: 0 0 16px;
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 400;
+}
+
+.carta > p:not(.etiqueta) {
+    font-size: 1.1rem;
+    line-height: 1.65;
+}
+
+#lugarTexto {
+    color: var(--rosa);
+}
+
+.campos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0 15px;
+}
+
+.campos label {
+    display: grid;
+    gap: 6px;
+    color: #726674;
+    font: 12px system-ui, sans-serif;
+}
+
+.campos input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ddced0;
+    border-radius: 7px;
+    background: white;
+    color: var(--tinta);
+    font: 15px system-ui, sans-serif;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+.botones button {
+    flex: 1;
+    padding: 12px 10px;
+    border: 0;
+    border-radius: 8px;
+    font: 600 14px system-ui, sans-serif;
+    cursor: pointer;
+}
+
+.aceptar {
+    color: white;
+    background: #a84f69;
+}
+
+.rechazar {
+    color: #594b5a;
+    background: #eee7ec;
+}
+
+.estado {
+    display: none;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f1e9ef;
+    font: 13px/1.5 system-ui, sans-serif;
+}
+
+.estado.visible {
+    display: block;
+}
+
+.nota {
+    color: #978c97;
+    text-align: center;
+    font: 11px/1.5 system-ui, sans-serif;
+}
+
+.firma {
+    color: #946679;
+    font-style: italic;
+}
+
+@media (max-width: 540px) {
+    .ventana { height: 275px; }
+    .campos, .botones { grid-template-columns: 1fr; }
+    .botones { flex-direction: column; }
+    .emoji-paloma { font-size: 64px; }
+}
